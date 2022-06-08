@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Kolokwium.Entities.Match>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Lista meczów</h2>
+
+<div>
+    <table class="table">
+        <thead class="tab-pane">
+        <tr>
+            <td>Rozgrywka</td>
+            <td>Drużyna 1</td>
+            <td>Wynik</td>
+            <td>Drużyna 2</td>
+            <td>Wygrana Drużyna</td>
+            <td>Anulowany?</td>
+            <td>
+                <a class="btn btn-outline-success float-right" asp-action="Add">Dodaj mecz</a>
+            </td>
+        </tr>
+        </thead>
+        <tbody class="tab-content">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.GameType</td>
+                <td>@item.FirstTeam.TeamName</td>
+                <td>@item.MatchResult</td>
+                <td>@item.SecondTeam.TeamName</td>
+                <td>@item.WinnerTeam.TeamName</td>
+                <td>@item.IsCancelled</td>
+                <td>
+                    <a class="btn btn-outline-success float-right" asp-action="Remove">Usuń mecz</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

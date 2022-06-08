@@ -1,0 +1,36 @@
+﻿@model MatchModel
+
+<h2>Dodawanie meczu</h2>
+<form method="post">
+    <div class="form-group">
+        <label>Rozgrywka</label>
+        <select class="form-control" asp-for="PlayedMatch.GameId" asp-items="@Model.AvailableGames"></select>
+    </div>
+
+    <div class="form-group">
+        <label>Drużyna 1</label>
+        <select class="form-control" asp-for="PlayedMatch.FirstTeamId" asp-items="@Model.AvailableTeams"></select>
+    </div>
+
+    <div class="form-group">
+        <label>Wynik</label>
+        <input type="text" class="form-control" asp-for="PlayedMatch.MatchResult"/>
+    </div>
+
+    <div class="form-group">
+        <label>Drużyna 2</label>
+        <select class="form-control" asp-for="PlayedMatch.SecondTeamId" asp-items="@Model.AvailableTeams"></select>
+    </div>
+
+
+    <div class="form-group">
+        <label>Czy anulowany?</label>
+        <input type="checkbox" asp-for="PlayedMatch.IsCancelled"/>
+    </div>
+
+    <div class="form-group">
+        <label>Wygrana drużyna</label>
+        <select class="form-control" asp-for="PlayedMatch.WinnerTeamId" asp-items="@Model.AvailableTeams"></select>
+    </div>
+    <button type="submit" class="btn-outline-primary float-right">Zapisz</button>
+</form>
