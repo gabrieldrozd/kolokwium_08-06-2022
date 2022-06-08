@@ -8,4 +8,5 @@ public interface IMatchRepo
     Task<IEnumerable<Game>> GetGames();
     Task<IEnumerable<Match>> GetMatches();
     Task<Match> AddMatch(Match match);
+    Task<bool> DeleteMatch(Guid id);
 }

@@ -38,9 +38,10 @@ public class HomeController : Controller
         return result != null ? RedirectToAction("Index") : Error();
     }
 
-    public IActionResult Remove()
+    public async Task<IActionResult> Remove(Guid id)
     {
-        throw new NotImplementedException();
+        var result = await _matchRepo.DeleteMatch(id);
+        return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()

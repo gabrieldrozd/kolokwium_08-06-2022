@@ -41,8 +41,19 @@ public class MatchRepo : IMatchRepo
     {
         match.Id = Guid.NewGuid();
         var entity = await _context.Matches.AddAsync(match);
-        var result = await _context.SaveChangesAsync();
+        var result = await _context.SaveChangesAsync() > 0;
 
-        return result > 0 ? entity.Entity : null;
+        return result ? entity.Entity : null;
+    }
+
+    public async Task<bool> DeleteMatch(Guid id)
+    {
+        var match = await _context.Matches.FirstOrDefaultAsync(x => x.Id == id);
+
+        if (match != null) _context.Matches.Remove(match);
+
+        var result = await _context.SaveChangesAsync() > 0;
+
+        return result;
     }
 }
